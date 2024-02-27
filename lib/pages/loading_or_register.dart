@@ -14,7 +14,7 @@ class LoadingOrWeather extends StatefulWidget {
 class _LoadingOrWeatherState extends State<LoadingOrWeather> {
   bool showLoadingPage = true;
 
-  final _weatherService = WeatherServices('a95bb1cb972033f4badbb0bda58660aa');
+  final _weatherService = WeatherServices('3c14e0708ebf409698d85942242702');
 
   late Weather _weather;
 
@@ -25,7 +25,7 @@ class _LoadingOrWeatherState extends State<LoadingOrWeather> {
       final weather = await _weatherService.getWeather(cityName);
       setState(() {
         _weather = weather;
-        showLoadingPage = !showLoadingPage ;
+        showLoadingPage = !showLoadingPage;
       });
     } catch (e) {
       print(e);

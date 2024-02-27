@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:weather_app/models/weather_model.dart';
 
 class WeatherPage extends StatefulWidget {
@@ -12,28 +11,6 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
 
-  
-
-  String getWeatherAnimation(String? mainCondition) {
-    if (mainCondition == null) return 'assets/sunny.json';
-
-    switch (mainCondition.toLowerCase()) {
-      case 'clouds':
-        return 'assets/cloud.json';
-      case 'smoke':
-        return 'assets/smoke.json';
-      case 'snow':
-        return 'assets/snow.json';
-      case 'rain':
-        return 'assets/rainy.json';
-      case 'thunderstorm':
-        return 'assets/thunder.json';
-      case 'clear':
-        return 'assets/sunny.json';
-      default:
-        return 'assets/sunny.json';
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +25,11 @@ class _WeatherPageState extends State<WeatherPage> {
             Text("${widget.weather.windSpeed} m/s winds from "),
             Row(
               children: [
-                Lottie.asset(getWeatherAnimation(widget.weather.mainCondition), width: 150),
+                Image.network("https://cdn.weatherapi.com/weather/64x64/day/113.png",width: 100, fit: BoxFit.contain,),
                 Column(
                   children: [
                     Text("${widget.weather.temperature.round() }°"),
-                    Text("Feels like ${widget.weather.feelsLike.round() }°"),
+                    Text("Feels like ${widget.weather.feelsLike.round() }° ${widget.weather.hourForecast[0].time}"),
                   ],
                 ),
               ],
