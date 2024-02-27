@@ -14,15 +14,15 @@ class Weather {
   final List<ForecastDaysWeather> daysforecast; //прогноз на неделю
 
   Weather({
-    required this.windSpeed,
-    required this.hourForecast,
-    required this.windDeg,
-    required this.description,
-    required this.feelsLike,
     required this.cityName,
     required this.temperature,
+    required this.feelsLike,
     required this.mainCondition,
+    required this.description,
+    required this.windSpeed,
+    required this.windDeg,
     required this.icon,
+    required this.hourForecast,
     required this.daysforecast,
   });
 
@@ -40,13 +40,12 @@ class Weather {
 
     final List<ForecastDaysWeather> daysforecast = [];
     json["forecast"]['forecastday'].forEach((forecast) => {
-      print(forecast["date"]),
           daysforecast.add(ForecastDaysWeather(
+            minTemperature: forecast["day"]['mintemp_c'],
+            maxTemperature: forecast["day"]['maxtemp_c'],
             windSpeed: forecast["day"]["maxwind_kph"],
             avghumidity: forecast["day"]["avghumidity"],
             date: forecast["date"],
-            minTemperature: forecast["day"]['mintemp_c'],
-            maxTemperature: forecast["day"]['maxtemp_c'],
             mainCondition: forecast["day"]['condition']['text'],
             icon: forecast["day"]['condition']['icon'],
           ))

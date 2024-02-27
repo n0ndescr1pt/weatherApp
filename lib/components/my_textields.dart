@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 
 class MyTextFields extends StatelessWidget {
-   final TextEditingController controller;
-  const MyTextFields({super.key, required this.controller});
+   
+  const MyTextFields({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: 
+      Text("sdas"),
     );
   }
 

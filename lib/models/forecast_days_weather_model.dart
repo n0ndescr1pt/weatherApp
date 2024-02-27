@@ -9,12 +9,12 @@ class ForecastDaysWeather {
   final int avghumidity;
 
   ForecastDaysWeather({
-    required this.windSpeed,
-    required this.avghumidity,
-    required this.date,
     required this.minTemperature,
     required this.maxTemperature,
     required this.mainCondition,
+    required this.windSpeed,
     required this.icon,
+    required this.date,
+    required this.avghumidity,
   });
 }

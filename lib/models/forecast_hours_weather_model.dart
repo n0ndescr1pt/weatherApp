@@ -7,11 +7,11 @@ class ForecastHourWeather {
   final String time;
 
   ForecastHourWeather({
-    required this.windDeg,
-    required this.time,
-    required this.windDir,
     required this.temperature,
     required this.mainCondition,
+    required this.windDeg,
+    required this.windDir,
     required this.icon,
+    required this.time,
   });
 }

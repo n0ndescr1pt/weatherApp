@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/components/my_page_view.dart';
 import 'package:weather_app/models/weather_model.dart';
+import 'package:weather_app/pages/pads/current_weather_info_pad.dart';
+import 'package:weather_app/pages/pads/current_weather_pad.dart';
 
 class WeatherPage extends StatefulWidget {
   final Weather weather;
@@ -10,34 +13,25 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
+  final PageController _pageController = PageController();
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ListView(
+      body:  ListView(
           padding: const EdgeInsets.all(16),
           children: [
             const SizedBox(height: 20,),
             const Text("Right now"),
             Text(widget.weather.description),
             Text("${widget.weather.windSpeed} m/s winds from "),
-            Row(
-              children: [
-                Image.network("https://cdn.weatherapi.com/weather/64x64/day/113.png",width: 100, fit: BoxFit.contain,),
-                Column(
-                  children: [
-                    Text("${widget.weather.temperature.round() }°"),
-                    Text("Feels like ${widget.weather.feelsLike.round() }° ${widget.weather.hourForecast[0].time}"),
-                  ],
-                ),
-              ],
-            ),
+            MyPageView(pageController: _pageController, firstWidget: CurrentWeatherPad(weather: widget.weather), secondWidget: CurrentWeatherInfoPad(weather: widget.weather), count: 2),
+           
             
           ],
         ),
-      ),
-    );
+      );
+
   }
 }
