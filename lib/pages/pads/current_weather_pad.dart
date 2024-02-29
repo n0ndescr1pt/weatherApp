@@ -11,7 +11,7 @@ class CurrentWeatherPad extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Image.network(
-          weather.icon,
+          "https:${weather.icon}",
           width: 100,
           fit: BoxFit.fill,
         ),
