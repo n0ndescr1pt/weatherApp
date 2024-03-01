@@ -2,30 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class MyPageView extends StatelessWidget {
-  final Widget firstWidget;
-  final Widget secondWidget;
-  final int count;
+  final List<Widget> widgets;
+  final double height;
   final PageController pageController;
   const MyPageView(
       {super.key,
-      required this.firstWidget,
-      required this.secondWidget,
+      required this.widgets,
       required this.pageController,
-      required this.count});
+      required this.height});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: height,
       child: Stack(
         children: [
-          PageView(
-            controller: pageController,
-            children: [
-              firstWidget,
-              secondWidget,
-            ],
-          ),
+          PageView(controller: pageController, children: widgets),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,7 +27,7 @@ class MyPageView extends StatelessWidget {
                 child: Center(
                   child: SmoothPageIndicator(
                     controller: pageController,
-                    count: count,
+                    count: widgets.length,
                     effect: const WormEffect(),
                     onDotClicked: (index) {
                       pageController.animateToPage(index,

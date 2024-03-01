@@ -3,6 +3,7 @@ import 'package:weather_app/models/forecast_hours_weather_model.dart';
 
 class Weather {
   final String cityName;
+  final int conditionCode;
   final double temperature;
   final double feelsLike;
   final String mainCondition;
@@ -15,6 +16,7 @@ class Weather {
 
   Weather({
     required this.cityName,
+    required this.conditionCode,
     required this.temperature,
     required this.feelsLike,
     required this.mainCondition,
@@ -52,6 +54,7 @@ class Weather {
         });
 
     return Weather(
+      conditionCode: json['current']['condition']['code'],
       hourForecast: hourForecast,
       daysforecast: daysforecast,
       windSpeed: json['current']['wind_kph'].toDouble(),

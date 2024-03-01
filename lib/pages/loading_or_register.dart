@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/pages/loading_page.dart';
+import 'package:weather_app/pages/navigation_page.dart';
 import 'package:weather_app/pages/weather_page.dart';
 import 'package:weather_app/services/weather_services.dart';
 
@@ -45,7 +46,7 @@ class _LoadingOrWeatherState extends State<LoadingOrWeather> {
     if(showLoadingPage){
       return const LoadingPage();
     } else {
-      return WeatherPage(weather: _weather,);
+      return NavigationPage(weather: _weather,);
     }
   }
 }
