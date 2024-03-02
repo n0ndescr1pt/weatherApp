@@ -13,7 +13,7 @@ class WeatherServices{
   WeatherServices(this.apiKEY);
    
   Future<Weather> getWeather(String cityName) async {
-    final response = await http.get(Uri.parse('$BASE_URL?key=$apiKEY&q=Omsk&days=7&aqi=no&alerts=no'));
+    final response = await http.get(Uri.parse('$BASE_URL?key=$apiKEY&q=$cityName&days=7&aqi=no&alerts=no'));
 
     if (response.statusCode == 200){
       return Weather.fromJson(jsonDecode(response.body));

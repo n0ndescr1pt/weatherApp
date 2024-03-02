@@ -8,6 +8,7 @@ class CurrentWeatherInfoPad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+
       children: [
         Row(
           children: [
@@ -15,7 +16,7 @@ class CurrentWeatherInfoPad extends StatelessWidget {
             SizedBox(
               width: 20,
             ),
-            Text(weather.windSpeed.toString())
+            Text(weather.cloud.toString())
           ],
         ),
         Row(

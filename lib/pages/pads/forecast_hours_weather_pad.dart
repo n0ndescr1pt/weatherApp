@@ -10,7 +10,7 @@ class ForecastHourPad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      MyColumnDiagram(weather: weather.hourForecast.sublist(13, 24)),
+      MyColumnDiagram(weather: weather.hourForecast.sublist(3, 13)),
       const SizedBox(
         height: 12,
       ),

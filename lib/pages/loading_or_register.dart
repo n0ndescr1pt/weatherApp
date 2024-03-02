@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/pages/loading_page.dart';
 import 'package:weather_app/pages/navigation_page.dart';
-import 'package:weather_app/pages/weather_page.dart';
 import 'package:weather_app/services/weather_services.dart';
 
 class LoadingOrWeather extends StatefulWidget {
-  const LoadingOrWeather({super.key});
+  final String? cityName;
+  const LoadingOrWeather({super.key, this.cityName});
 
   @override
   State<LoadingOrWeather> createState() => _LoadingOrWeatherState();
@@ -20,7 +20,12 @@ class _LoadingOrWeatherState extends State<LoadingOrWeather> {
   late Weather _weather;
 
   _fetchWeather() async {
-    String cityName = await _weatherService.getCurrentCity();
+    String cityName;
+    if (widget.cityName == null) {
+      cityName = await _weatherService.getCurrentCity();
+    } else {
+      cityName = widget.cityName!;
+    }
 
     try {
       final weather = await _weatherService.getWeather(cityName);
@@ -40,13 +45,14 @@ class _LoadingOrWeatherState extends State<LoadingOrWeather> {
     _fetchWeather();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    if(showLoadingPage){
+    if (showLoadingPage) {
       return const LoadingPage();
     } else {
-      return NavigationPage(weather: _weather,);
+      return NavigationPage(
+        weather: _weather,
+      );
     }
   }
 }

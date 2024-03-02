@@ -11,10 +11,25 @@ class Weather {
   final double windSpeed;
   final int windDeg;
   final String icon;
+
+  final String moonPhase;
+  final String sunRise;
+  final String sunSet;
+  final double pressure;
+  final int humidity;
+  final double precip;
+  final int cloud;
   final List<ForecastHourWeather> hourForecast; //прогноз по часам
   final List<ForecastDaysWeather> daysforecast; //прогноз на неделю
 
   Weather({
+    required this.moonPhase,
+    required this.sunRise,
+    required this.sunSet,
+    required this.pressure,
+    required this.humidity,
+    required this.precip,
+    required this.cloud,
     required this.cityName,
     required this.conditionCode,
     required this.temperature,
@@ -54,6 +69,15 @@ class Weather {
         });
 
     return Weather(
+      moonPhase: json['forecast']["forecastday"][0]['astro']["moon_phase"],
+      sunRise: json['forecast']["forecastday"][0]['astro']["moon_phase"],
+      sunSet: json['forecast']["forecastday"][0]['astro']["moon_phase"],
+      
+      pressure: json['current']["pressure_mb"].toDouble(),
+      humidity: json['current']["humidity"].toInt(),
+      precip: json['current']["precip_mm"].toDouble(),
+      cloud: json['current']["cloud"].toInt(),
+
       conditionCode: json['current']['condition']['code'],
       hourForecast: hourForecast,
       daysforecast: daysforecast,
@@ -68,6 +92,3 @@ class Weather {
     );
   }
 }
-
-
-
