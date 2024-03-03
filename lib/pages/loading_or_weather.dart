@@ -19,7 +19,7 @@ class _LoadingOrWeatherState extends State<LoadingOrWeather> {
 
   late Weather _weather;
 
-  _fetchWeather() async {
+  _fetchWeather(BuildContext context) async {
     String cityName;
     if (widget.cityName == null) {
       cityName = await _weatherService.getCurrentCity();
@@ -34,7 +34,15 @@ class _LoadingOrWeatherState extends State<LoadingOrWeather> {
         showLoadingPage = !showLoadingPage;
       });
     } catch (e) {
-      print(e);
+      String curCityName = await _weatherService.getCurrentCity();
+      final weather = await _weatherService.getWeather(curCityName);
+      setState(() {
+        _weather = weather;
+        showLoadingPage = !showLoadingPage;
+      });
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Write correct city")));
     }
   }
 
@@ -42,7 +50,7 @@ class _LoadingOrWeatherState extends State<LoadingOrWeather> {
   void initState() {
     super.initState();
 
-    _fetchWeather();
+    _fetchWeather(context);
   }
 
   @override
@@ -50,9 +58,7 @@ class _LoadingOrWeatherState extends State<LoadingOrWeather> {
     if (showLoadingPage) {
       return const LoadingPage();
     } else {
-      return NavigationPage(
-        weather: _weather,
-      );
+      return NavigationPage(weather: _weather);
     }
   }
 }

@@ -15,9 +15,9 @@ class ForecastHourPad2 extends StatelessWidget {
         height: 12,
       ),
       Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: weather.hourForecast
-            .sublist(0, 11)
+            .sublist(13, 23)
             .map((ForecastHourWeather data) =>
                 (Image.network(width: 30, "https:${data.icon}")))
             .toList(),

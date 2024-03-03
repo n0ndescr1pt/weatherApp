@@ -16,7 +16,7 @@ class WeatherServices{
     final response = await http.get(Uri.parse('$BASE_URL?key=$apiKEY&q=$cityName&days=7&aqi=no&alerts=no'));
 
     if (response.statusCode == 200){
-      return Weather.fromJson(jsonDecode(response.body));
+      return Weather.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
     } else {
       throw Exception('failed to load');
     }
@@ -25,10 +25,10 @@ class WeatherServices{
   Future<String> getCurrentCity() async {
     //get permission from user
     LocationPermission permission = await Geolocator.checkPermission();
+    
     if (permission == LocationPermission.denied){
       permission = await Geolocator.requestPermission();
     }
-
     Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
     List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
@@ -37,4 +37,5 @@ class WeatherServices{
 
     return city ?? "";
   }
+  
 }

@@ -16,6 +16,7 @@ String? _getWeatherState(int code){
     case 1282 || 1279 || 1276 || 1273: return 'assets/thunder.json';
     default: return 'assets/sunny.json';
   }
+  return 'assets/sunny.json';
 }
 
   @override
@@ -24,7 +25,7 @@ String? _getWeatherState(int code){
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-       Lottie.asset(_getWeatherState(weather.conditionCode) ?? 'assets/sunny.json'),
+       Lottie.asset(_getWeatherState(weather.conditionCode) ?? 'assets/sunny.json', height: 200),
         SizedBox(width: 12,),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,

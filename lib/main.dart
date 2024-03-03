@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/pages/loading_or_register.dart';
+import 'package:weather_app/pages/loading_or_weather.dart';
+import 'theme/light_mode.dart';
+import 'theme/dark_mode.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,9 +12,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoadingOrWeather(),
+      home: const LoadingOrWeather(),
+      theme: lightMode,
+      darkTheme: darkMode,
     );
   }
 }

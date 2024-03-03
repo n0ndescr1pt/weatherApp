@@ -70,8 +70,8 @@ class Weather {
 
     return Weather(
       moonPhase: json['forecast']["forecastday"][0]['astro']["moon_phase"],
-      sunRise: json['forecast']["forecastday"][0]['astro']["moon_phase"],
-      sunSet: json['forecast']["forecastday"][0]['astro']["moon_phase"],
+      sunRise: json['forecast']["forecastday"][0]['astro']["sunrise"],
+      sunSet: json['forecast']["forecastday"][0]['astro']["sunset"],
       
       pressure: json['current']["pressure_mb"].toDouble(),
       humidity: json['current']["humidity"].toInt(),

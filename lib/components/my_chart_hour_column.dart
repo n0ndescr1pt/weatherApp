@@ -44,7 +44,7 @@ class MyColumnDiagram extends StatelessWidget {
                     width: 0.93,
                     color: Colors.blue,
                     dataSource: weather,
-                    dataLabelSettings: const DataLabelSettings(isVisible: true, offset: Offset(0, -35), textStyle: TextStyle(fontSize: 12,color: Colors.white)),
+                    dataLabelSettings: const DataLabelSettings(isVisible: true, offset: Offset(0, -35), textStyle: TextStyle(fontSize: 11,color: Colors.white)),
                     dataLabelMapper: (ForecastHourWeather data, _) => "${data.temperature.round().toString()}°" ,
                     xValueMapper: (ForecastHourWeather data, _) => data.time.substring(10,16),
                     yValueMapper: (ForecastHourWeather data, _) => (data.temperature + 40) / 4)

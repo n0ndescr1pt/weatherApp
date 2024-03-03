@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/models/forecast_days_weather_model.dart';
-import 'package:weather_app/models/forecast_hours_weather_model.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class MyColumnDaysDiagram extends StatelessWidget {
