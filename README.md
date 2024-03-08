@@ -1,6 +1,6 @@
 # weather_app
 
-Get weather
+Application for checking the weather, only the main screen is implemented
 
 ## Versions
 
